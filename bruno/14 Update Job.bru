@@ -1,0 +1,23 @@
+meta {
+  name: Update Job
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{baseUrl}}/jobs/{{jobId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+body:json {
+  {"salaryMax":160000}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

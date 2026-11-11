@@ -1,0 +1,19 @@
+meta {
+  name: Employer Get Profile
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/employers/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

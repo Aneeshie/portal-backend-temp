@@ -1,0 +1,27 @@
+meta {
+  name: Create Job
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/jobs
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+body:json {
+  {"title":"Backend Engineer","description":"Build APIs with Node","location":"Bangalore","salaryMin":100000,"salaryMax":150000,"experience":2,"skills":["typescript","node","postgresql"],"type":"full-time"}
+}
+
+script:post-response {
+  bru.setVar("jobId", res.body.data.id);
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

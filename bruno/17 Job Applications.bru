@@ -1,0 +1,19 @@
+meta {
+  name: Job Applications
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}/jobs/{{jobId}}/applications
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

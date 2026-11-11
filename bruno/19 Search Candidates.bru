@@ -1,0 +1,19 @@
+meta {
+  name: Search Candidates
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{baseUrl}}/candidates?q=typescript&location=bangalore&experience=2&skills=node
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

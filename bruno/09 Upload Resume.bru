@@ -1,0 +1,23 @@
+meta {
+  name: Upload Resume
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/candidates/me/resume
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+body:multipartForm {
+  resume: @file(sample-resume.txt)
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Update Application Status
+  type: http
+  seq: 18
+}
+
+patch {
+  url: {{baseUrl}}/applications/{{applicationId}}/status
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+body:json {
+  {"status":"interview"}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

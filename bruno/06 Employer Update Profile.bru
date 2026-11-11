@@ -1,0 +1,23 @@
+meta {
+  name: Employer Update Profile
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/employers/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+body:json {
+  {"website":"https://acme.com"}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

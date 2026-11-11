@@ -1,0 +1,23 @@
+meta {
+  name: Employer Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/employers/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {"email":"hr@acme.com","password":"pass123"}
+}
+
+script:post-response {
+  bru.setVar("employerToken", res.body.data.token);
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

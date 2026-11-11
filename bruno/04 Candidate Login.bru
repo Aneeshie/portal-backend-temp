@@ -1,0 +1,23 @@
+meta {
+  name: Candidate Login
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/candidates/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {"email":"jane@mail.com","password":"pass123"}
+}
+
+script:post-response {
+  bru.setVar("candidateToken", res.body.data.token);
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Search Jobs
+  type: http
+  seq: 12
+}
+
+get {
+  url: {{baseUrl}}/jobs?q=backend&location=bangalore&minSalary=120000&experience=3&skills=node&type=full-time
+  body: none
+  auth: none
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Candidate Register
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/candidates/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {"email":"jane@mail.com","password":"pass123","name":"Jane","location":"Bangalore"}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

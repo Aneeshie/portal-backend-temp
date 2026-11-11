@@ -1,0 +1,27 @@
+meta {
+  name: Apply To Job
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseUrl}}/jobs/{{jobId}}/apply
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+body:json {
+  {"coverLetter":"Interested!"}
+}
+
+script:post-response {
+  bru.setVar("applicationId", res.body.data.id);
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

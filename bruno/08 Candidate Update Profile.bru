@@ -1,0 +1,23 @@
+meta {
+  name: Candidate Update Profile
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseUrl}}/candidates/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+body:json {
+  {"skills":["typescript","node"],"experience":2}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

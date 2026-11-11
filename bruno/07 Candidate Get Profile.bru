@@ -1,0 +1,19 @@
+meta {
+  name: Candidate Get Profile
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/candidates/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

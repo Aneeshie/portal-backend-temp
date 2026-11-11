@@ -1,0 +1,19 @@
+meta {
+  name: My Applications
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseUrl}}/applications/mine
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

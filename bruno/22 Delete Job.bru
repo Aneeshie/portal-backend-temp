@@ -1,0 +1,19 @@
+meta {
+  name: Delete Job
+  type: http
+  seq: 22
+}
+
+delete {
+  url: {{baseUrl}}/jobs/{{jobId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{employerToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}

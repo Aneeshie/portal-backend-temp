@@ -1,0 +1,19 @@
+meta {
+  name: Recommended Jobs
+  type: http
+  seq: 20
+}
+
+get {
+  url: {{baseUrl}}/recommendations/jobs
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{candidateToken}}
+}
+
+tests {
+  test("ok", () => expect(res.body.ok).to.equal(true));
+}
